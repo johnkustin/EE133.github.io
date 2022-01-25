@@ -1,0 +1,3 @@
+(sym_lib_table
+  (lib (name "semtech")(type "KiCad")(uri "${KIPRJMOD}/semtech.kicad_sym")(options "")(descr ""))
+)
