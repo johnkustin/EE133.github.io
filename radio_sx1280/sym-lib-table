@@ -1,3 +1,4 @@
 (sym_lib_table
   (lib (name "semtech")(type "KiCad")(uri "${KIPRJMOD}/semtech.kicad_sym")(options "")(descr ""))
+  (lib (name "radio_parts_sx1280")(type "KiCad")(uri "${KIPRJMOD}/radio_parts_sx1280.kicad_sym")(options "")(descr ""))
 )
