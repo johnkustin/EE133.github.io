@@ -11,11 +11,13 @@ The impedances of real-life passive components can be vastly different from thei
 
 In introductory circuits courses, passivie components like resistors, capacitors, and inductors are studied in order to understand their impedances. Simple models have been created which describe (theoritecally) the impedance of each device. For a resistor, capacitor, and inductor, their (ideal) impedances are respectively
 
-$$Z_R = R  \newline
-Z_C = 1/j\omega C = -j/\omega C \newline
-Z_L = j\omega L$$
+<img src="https://render.githubusercontent.com/render/math?math=\color{gray}{Z_R = R}">  
 
-where R, C, L are the resistance, capacitance, and inductance, but $\omega = 2\pi f$, where $f$ is frequency in Hertz.
+<img src="https://render.githubusercontent.com/render/math?math=\color{gray}{Z_C = 1/j\omega C = -j/\omega C}">  
+
+<img src="https://render.githubusercontent.com/render/math?math=\color{gray}{Z_L = j\omega L}">  
+
+where R, C, L are the resistance, capacitance, and inductance, but <img src="https://render.githubusercontent.com/render/math?math=\color{gray}{\omega = 2\pi f}"> where <img src="https://render.githubusercontent.com/render/math?math=\color{gray}{f}"> is frequency in Hertz.
 
 When these components are realized in real life, the construction of each tends to yield **parsitics**. For the purpose of this investigation, we consider parasitics as uninteded side-effects to the operation of the component that are inherent to its physical construction. Each of the resistor, inductor, and capacitor have an ideal impedance, so each of their parasitics would cause deviations from their ideal models. How bad the deviation can get will be demonstrated in the following sections. The well-understood (by others, not us yet) parasitics that are commonly included in more sophisticated models are
 
@@ -52,7 +54,7 @@ The parasitics are included within the inductor model's settings:
 
 ![inductor settings](images/realistic_inductor_setup_parasitics.png)
 
-Both testbenches use a voltage source with an AC signal amplitude of $1 V$ so that when the division $Z(j\omega) = V(j\omega) / I(j\omega)$ is performed with the measured current, the result is the true impedance (not scaled by an arbitrary factor).
+Both testbenches use a voltage source with an AC signal amplitude of <img src="https://render.githubusercontent.com/render/math?math=\color{gray}{1 V}"> so that when the division <img src="https://render.githubusercontent.com/render/math?math=\color{gray}{Z(j\omega) = V(j\omega) / I(j\omega)}"> is performed with the measured current, the result is the true impedance (not scaled by an arbitrary factor).
 
 ### NanoVNA
 
@@ -127,8 +129,8 @@ At the resonant frequency, the impedance for an inductor increases while the cap
 
 
 The circuit intuition for this behavior is:
-- For the inductor, when $f$ is much below the resonant frequency $f_o$, $f << f_o$, the actual inductor looks like a short, the parasitic parallel capacitor looks like an open, so the impedance of the series resistor dominates. When $f >> f_o$ the capacitor looks like an short, the inductor looks like an open, so the capacitance dominates the impedance. At resonant frequency, no component can be "assumed to be negligant", so the impedance is greatest. So on either ends, there is a relatively lower impedance than at the resonant frequency.
-- For the capacitor, when $f << f_o$, the capacitor looks like an open. When $f >> f_o$ the inductor looks like an open. So on either extreme, there is a relatively higher impedance than at the resonant frequency.
+- For the inductor, when <img src="https://render.githubusercontent.com/render/math?math=\color{gray}{f}"> is much below the resonant frequency <img src="https://render.githubusercontent.com/render/math?math=\color{gray}{f_o}">, <img src="https://render.githubusercontent.com/render/math?math=\color{gray}{f << f_o}">, the actual inductor looks like a short, the parasitic parallel capacitor looks like an open, so the impedance of the series resistor dominates. When  <img src="https://render.githubusercontent.com/render/math?math=\color{gray}{f >> f_o}"> the capacitor looks like an short, the inductor looks like an open, so the capacitance dominates the impedance. At resonant frequency, no component can be "assumed to be negligant", so the impedance is greatest. So on either ends, there is a relatively lower impedance than at the resonant frequency.
+- For the capacitor, when <img src="https://render.githubusercontent.com/render/math?math=\color{gray}{f << f_o}">, the capacitor looks like an open. When <img src="https://render.githubusercontent.com/render/math?math=\color{gray}{f >> f_o}"> the inductor looks like an open. So on either extreme, there is a relatively higher impedance than at the resonant frequency.
 
 The presented measurements and plots are limited by the granularity of the impedance versus frequency sweep. To achieve an ideal measurement, an infinite amount of points measured by the VNA is required. Therefore, the plots derived from the VNA should not be considered "complete" representations of a any given component's impedance versus frequency behavior. The lesson learned from this limitatation is that if one wishes to characterize the impedance of an absolutely critical structure in a circuit, using as many points as possible in that measurement would yield the best characterization.
 
