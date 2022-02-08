@@ -84,12 +84,17 @@ The notch is approximately located at 503 MHz.
 #### NanoVNA Capacitor
 
 The first two figures show impedance measurements for the surface-mount capacitor on the RF evaluation board. The first figure sweeps frequency from 10 to 100 MHz, while the second sweeps from 1 MHz to 2 GHz.
-![vna capacitor board](images/capacitor.png)
 
-![vna capacitor 2Ghz board](images/capacitor_2GHz_max.png)
+> Impedance vs. Frequency for RF eval board capacitor
+> ![vna capacitor board](images/capacitor.png)
+
+> Impedance vs. Frequency for RF eval board capacitor, 2 GHz maximum frequency
+> ![vna capacitor 2Ghz board](images/capacitor_2GHz_max.png)
 
 The third figure measures impedance for a through-hole capacitor from 0.1 MHz to 4 GHz.
-![vna capacitor sma](images/capacitor_sma_meas.png)
+
+> Impedance vs. Frequency for discrete thru-hole capacitor
+> ![vna capacitor sma](images/capacitor_sma_meas.png)
 
 
 
@@ -97,12 +102,16 @@ The third figure measures impedance for a through-hole capacitor from 0.1 MHz to
 
 The first two figures show impedance measurements for the surface-mount inductor on the RF evaluation board. The first figure sweeps frequency from 10 to 100 MHz, while the second sweeps from 1 MHz to 2 GHz. The S11 corresponds to the impedance of the DUT because the *input* port of the DUT is driven by the VNA and the *output* port is grounded.
 
-![vna inductor board](images/inductor.png)
+> Impedance vs. Frequency for RF eval board inductor
+> ![vna inductor board](images/inductor.png)
 
-![vna inductor 2GHz board](images/inductor_2GHz_max.png)
+> Impedance vs. Frequency for RF eval board inductor, 2 GHz maximum frequency
+> ![vna inductor 2GHz board](images/inductor_2GHz_max.png)
 
 The third figure measures impedance for a through-hole inductor from 0.1 MHz to 1 GHz. The S21 corresponds to the impedance of the DUT because the *input* port of the DUT is driven by the VNA and the *output* port is measured by the VNA.
-![vna inductor sma](images/inductor_sma_meas.png)
+
+> Impedance vs. Frequency for through-hole inductor
+> ![vna inductor sma](images/inductor_sma_meas.png)
 ## Discussion
 The LTSpice simulations predicted that real-life inductors and capacitors have reasonant frequencies which dramatically affect each component's impedance. The VNA measurements verify this case.
 
@@ -121,10 +130,11 @@ The circuit intuition for this behavior is:
 - For the inductor, when $f$ is much below the resonant frequency $f_o$, $f << f_o$, the actual inductor looks like a short, the parasitic parallel capacitor looks like an open, so the impedance of the series resistor dominates. When $f >> f_o$ the capacitor looks like an short, the inductor looks like an open, so the capacitance dominates the impedance. At resonant frequency, no component can be "assumed to be negligant", so the impedance is greatest. So on either ends, there is a relatively lower impedance than at the resonant frequency.
 - For the capacitor, when $f << f_o$, the capacitor looks like an open. When $f >> f_o$ the inductor looks like an open. So on either extreme, there is a relatively higher impedance than at the resonant frequency.
 
+The presented measurements and plots are limited by the granularity of the impedance versus frequency sweep. To achieve an ideal measurement, an infinite amount of points measured by the VNA is required. Therefore, the plots derived from the VNA should not be considered "complete" representations of a any given component's impedance versus frequency behavior. The lesson learned from this limitatation is that if one wishes to characterize the impedance of an absolutely critical structure in a circuit, using as many points as possible in that measurement would yield the best characterization.
+
 ## Conclusions
 
-All of this discussion points to the *unfortunate* reality that passive components in real-life are not ideal. In fact, their impedances may be widely different from the ideal models of impedance described in the Background section. Going further, if a specific component with a resonant frequency is used in the frequency range of resonance, the behavior of the circuit would deviate from expectations.
+Passive components in real-life are never ideal. In fact, their impedances may be widely different from the ideal models of impedance described in the Background section. Going further, if a specific component with a resonant frequency is used in the frequency range of resonance, the behavior of the circuit would deviate from expectations.
 
 One way to improve the quality of measurements through the SMA fixtures is to use as short of leads as possible between the DUT and the SMA pins. Using shorter leads implies less inductance and resistance from the wires itself, so the impedance measurement is more true to the actual DUT. 
 
-The presented measurements and plots are limited by the granularity of the impedance versus frequency sweep. To achieve an ideal measurement, an infinite amount of points measured by the VNA is required. Therefore, the plots derived from the VNA should not be considered "complete" representations of a any given component's impedance versus frequency behavior. The lesson learned from this limitatation is that if one wishes to characterize the impedance of an absolutely critical structure in a circuit, using as many points as possible in that measurement would yield the best characterization.
