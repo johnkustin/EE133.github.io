@@ -82,18 +82,18 @@ How will we measure the impedance of real life components? With the NanoVNAv2. T
     <figcaption align="center"><b>Fig.6 - Left: a photo of the NanoVNAv2 with female to male SMA adapters that was used to measure the impedances for the lab. Right: a photo of the NanoVNAv2 connected to a test structure built to hold the device under test (DUT), an inductor is the DUT in the figure. </b></figcaption>
 </p>
 
+![bg](red)
 <div id ="fig:vnablockdiagram">
 <figure>
-<img src="https://nanorfe.com/ug1101_html_e6b0dfe5414cde60.gif" alt="Trulli" style="width:100%;background-color:white">
+<img src="https://nanorfe.com/ug1101_html_e6b0dfe5414cde60.gif" alt="Trulli" style="width:100%">
 <figcaption align="center"><b>Fig.6b - <a href="https://nanorfe.com/nanovna-v2-user-manual.html" title="Block Diagram"> Block Diagram</a> of the NanoVNAv2. Note the internal termination of the ports.  </b></figcaption>
 </figure>
 
 </div>
 
-We used the VNA shown in Figure 6 to measure the impedances of various test fixtures. The internals of the NanoVNAv2 are shown in Figure 6b. Before using the VNA, we have to calibrate it according to a **S**hort **O**pen **L**oad **T**hru (SOLT) ![procedure](https://zone.ni.com/reference/en-XX/help/373153D-01/vnahelp/calibration_solt/) each time the cable type of the VNA was changed. This calibration is essential for obtaining valid measurements because it calibrates-out the losses of the cables; we would like to only measure the losses of our DUT.
+We used the VNA shown in Figure 6 to measure the impedances of various test fixtures. The internals of the NanoVNAv2 are shown in Figure 6b. Before using the VNA, we have to calibrate it according to a **S**hort **O**pen **L**oad **T**hru (SOLT) <a href="https://zone.ni.com/reference/en-XX/help/373153D-01/vnahelp/calibration_solt/" title="SOLT"> procedure</a> each time the cable type of the VNA was changed. This calibration is essential for obtaining valid measurements because it calibrates-out the losses of the cables; we would like to only measure the losses of our DUT.
 
 There were four devices under test in the lab and they are shown below in Figure 7.
-<!-- ![picture of the rf demo board](images/rf-demo-board.jpeg) -->
 
 <p float="left">
     <img src="images/rf-demo-board.jpeg" alt="Trulli" style="width:60%">
