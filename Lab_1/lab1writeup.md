@@ -82,7 +82,6 @@ How will we measure the impedance of real life components? With the NanoVNAv2. T
     <figcaption align="center"><b>Fig.6 - Left: a photo of the NanoVNAv2 with female to male SMA adapters that was used to measure the impedances for the lab. Right: a photo of the NanoVNAv2 connected to a test structure built to hold the device under test (DUT), an inductor is the DUT in the figure. </b></figcaption>
 </p>
 
-![bg](red)
 <div id ="fig:vnablockdiagram">
 <figure>
 <img src="https://nanorfe.com/ug1101_html_e6b0dfe5414cde60.gif" alt="Trulli" style="width:100%">
