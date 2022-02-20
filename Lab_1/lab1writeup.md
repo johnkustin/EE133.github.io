@@ -72,7 +72,8 @@ Both testbenches use a voltage source with an AC signal amplitude of <img src="h
 
 ### NanoVNAv2
 
-How will we measure the impedance of real life components? With the NanoVNAv2. The NanoVNAv2 !["is a handheld Vector Network Analyzer (VNA) with small outline, originally designed by edy555".](https://NanoVNAv2.com)
+How will we measure the impedance of real life components? With the NanoVNAv2. The
+<a href="https://NanoVNA.com" title="NanoVNAv2Homepage"> NanoVNAv2</a> "is a handheld Vector Network Analyzer (VNA) with small outline, originally designed by edy555"
 
 
 <p float="left">
@@ -83,7 +84,7 @@ How will we measure the impedance of real life components? With the NanoVNAv2. T
 
 <div id ="fig:vnablockdiagram">
 <figure>
-<img src="https://nanorfe.com/ug1101_html_e6b0dfe5414cde60.gif" alt="Trulli" style="width:100%">
+<img src="https://nanorfe.com/ug1101_html_e6b0dfe5414cde60.gif" alt="Trulli" style="width:100%;background-color:white">
 <figcaption align="center"><b>Fig.6b - <a href="https://nanorfe.com/nanovna-v2-user-manual.html" title="Block Diagram"> Block Diagram</a> of the NanoVNAv2. Note the internal termination of the ports.  </b></figcaption>
 </figure>
 
