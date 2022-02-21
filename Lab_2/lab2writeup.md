@@ -14,7 +14,7 @@ Previous iterations of Stanford University's Analog Communications Design Labora
 
 This lab is meant to introduce the emerging engineer to a *modern*, low-cost, and widely used clock generator -- the <a href="https://cdn-shop.adafruit.com/datasheets/Si5351.pdf"> Si5351 </a> -- and the mechanisms which enable it, e.g. a fractional-N PLL. This part has a low price point, reasonable performance, and successful history (it is used in the NanoVNA V2 that was used in Lab1!). The experience gained through this lab can be carried forward in a young engineer's career as they embark on projects that will most certainly include clock generation.[^1]
 
-This lab uses <a href ="https://circuitpython.org"> Circuit Python</a>, which enables low-stress communication with embedded microcontrollers through a Python API.
+This lab uses <a href ="https://circuitpython.org"> CircuitPython</a>, which enables low-stress communication with embedded microcontrollers through a Python API.
 
 [^1]: This background is pulled from Steve Clark's <a href="https://canvas.stanford.edu/courses/148940/discussion_topics/722850"> Canvas Announcement </a>.
 
@@ -72,15 +72,21 @@ Figure 4 displays the 112.50 MHz clock in the frequency and time domains. The sp
 
 ## Discussion
 
+In future iterations of this lab, the pictures of the spectrum should have a wide-enough span to capture at least the first harmonic of the square wave. A more accurate SFDR performance can be given with the harmonic information.
+
 It seems that as the desired output frequency is increased, the output clock appears more sinusoidal than square-like. We propose two hypotheses: i) the clock-generation circuit cannot perform as fast as we want it to; ii) higher frequency content is more attenuated in its propagation from output of the Si5351 to input of the oscilloscope, so faster signals are naturally more attenuated. The first hypothesis is incorrect because the datasheet reports the device can supply output clocks up to 160 MHz. The more likely culprit for the degradation in shape is the attenuation of high frequencies from the parasitics of the traces, leads, packages, etc. 
 
-- The manufacturer claims that an Si5351 can generate frequencies from around 8 kHz to around 160 MHz. The recommended crystal frequency is 25 MHz. How can it generate frequencies in excess of 6X the basic clock rate?
-- How do I know which frequencies are able to be generated?
+This natural attenuation suggests that we can generate more than just a square wave with this circuit. If we deliberatly filter the output square wave, then perhaps we can make a sine wave or triangle wave. Indeed, to make a sine wave, what we would need to add to the output of the circuit is a filter to remove all harmonics but preserve the fundamental frequency. If we attach an <a href="https://en.wikipedia.org/wiki/Triangle_wave#Relation_to_the_square_wave">integrator </a> to the output then we can generate a triangle wave.
+
+Another application of the Si5351 is generation of in-phase and in-quadrature signals to drive mixers. Recall that the in-phase signal can have any frequency or phase. What makes the pair I/Q is that the in-quadrature signal **must** be 90 degrees out of phase with the in-phase signal. The Si5351A (the specific model used in this lab) has three outputs. Suppose we take the output of <code>clk0</code> to be the "in-phase" signal. Could we then use <code>clk1</code> to generate the "in-quadrature" signal? From the datasheet we can see that I/Q signal generation is possible with the Si5351 because each clock channel can be configured with a static phase-offset. These configurations are done through the <code>CLKX_PHOFF</code> register, where <code>X</code> is the number of the clock. The resolution of the offset is a function of the period of the PLL associated with the clock output. The datasheet says the resolution is <code>T<sub>vco</sub>/4</code>, where <code>T<sub>vco</sub></code> is the period of the VCO/PLL associated with the output. If <code>clk0</code> is configured to be a 100 MHz signal with no "initial phase offset" (this is a term used in the datasheet) then we would configure <code>clk1</code> to be a 100 MHz signal with <code>CLK1_PHOFF</code> set to be <code>7'b000001</code>. This delays <code>clk1</code> by a quarter of a period relative to <code>clk0</code>, making the two signals an I/Q pair. All kinds of configuration can be done through CircuitPython according to the API in <a href="https://github.com/adafruit/Adafruit_CircuitPython_SI5351"> this repository</a>.
+
+None of these applications need to be done at a specific frequency. The Si5351 is capable of generating frqeuencies from 8 kHz to 160 MHz by using a fractional-N phase locked loop (PLL). Roughly speaking, fractional-N PLLs can perform a frequency multiplication on the input source of oscillation to generate output clocks that are greater in frequency than the input signal. This mechanism is enabled by a frequency divider put in *negative feedback*. To generate signals that are lower in frequency than the reference oscillator, fracional-N PLLs use clock divider circuits to make the resulting output clock slower. This mechanism is most readily enabled by counting circuits. For more information on how these devices work, please refer to this <a href="https://www.ti.com/lit/an/swra029/swra029.pdf?ts=1645439625997">TI datasheet</a>.
+
+CircuitPython makes configuring the Si5351 very easy. The APIs available allow the user to adjust the integer and fractional 
+
 - Can I modify the CircuitPython code to generate a frequency (or two) of my choice?
 - Does it really work to write TRUE or FALSE to a particular place and turn that particular output ON / OFF?
-- It seems like when the output frequency is "high" the square wave output turns into a more sinusoidal waveform. Why is that?
-- What if I want a sine wave, or triangle wave, or saw-tooth wave... Can I use this to generate those waveforms?
-- I've been thinking a lot about generating in-phase (I) and in-quadrature (Q) signals to drive mixers. Can I use this clock generator to directly generate I & Q for my mixer drive?
+
 - If I wanted to try designing a PLL, might this be a gizmo that I could use to test my PLL?
 - What is phase noise? And how is it related to "jitter"? And it this a low-noise part? Or not? How can I tell?
 - So, Steve, if this is used for the "low frequency regime", what is used in the "high frequency regime" to provide the signal source in the NanoVNA V2 Plus4?
