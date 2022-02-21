@@ -44,17 +44,25 @@ The code which controlls the clock generation is from an <a href="https://learn.
 
 ## Measurements and Results
 
+In this section we will view the time and frequency domains of the three different clocks.
+
+In Figure 2 the 10.70 kHz clock is visible in the frequency and time domains. On the left hand side of the figure, the fundamental frequency (10.70 kHz) has about 48 dB of spurious free dynamic range (SFDR) and has about 70 dB separation from the noise floor. The span of the measuremeant is 13 kHz, so the view is not able to show the odd harmonics of a square wave. On the right hand side we can see a crisp square wave that has minor over/under-shoot at the rising and falling edges, respectively. The defined levels of the clock (HI/LO) are constant, absent from the noise which gives the levels some "thickness".
+
 <figure>
 <img src="images/IMG_7818.jpeg" alt="frequency spectrum of 10.70kHz clock" style="width:49%">
 <img src="images/IMG_7815.jpeg" alt="time domain view of 10.70kHz clock" style="width:49%">
-<figcaption align="center">Fig. 2 - Left: Frequency spectrum of 10.70 kHz clock. Right: Voltage versus Time view of 10.70 kHz clock. </figcaption>
+<figcaption align="center">Fig. 2 - Left: Frequency spectrum of 10.70 kHz clock. Center frequency is 10.70 kHz. Span of the window is 13 kHz. Resolution bandwidth is 130 Hz. 401 points were collected for the spectrum. Right: Voltage versus Time view of 10.70 kHz clock. The plot uses 20 microsecond divisions in the horizontal direction and 1 Volt divisons in the vertical direction. </figcaption>
 </figure>
+
+Figure 3 shows the 13.552 MHz clock in the frequency and time domains. On the left hand side of the figure, the fundamental frequency (13.552 MHz) has about 48 dB of spurious free dynamic range (SFDR) and has roughly 60 dB separation from the noise floor. The span of the measuremeant is 312 kHz. On the right hand side we can see some distortions in the square wave. The slew of the rising and falling edges is weaker than in the 10.70 kHz case. The under and over shooting are more pronounced than before.
 
 <figure>
 <img src="images/IMG_7817.jpeg" alt="frequency spectrum of 13.552 MHz clock" style="width:49%">
 <img src="images/IMG_7814.jpeg" alt="time domain view of 13.552 MHz clock" style="width:49%">
-<figcaption align="center">Fig. 3 - Left: Frequency spectrum of 13.552 MHz clock. Right: Voltage versus Time view of 13.552 MHz clock. </figcaption>
+<figcaption align="center">Fig. 3 - Left: Frequency spectrum of 13.552 MHz clock. Center frequency is 13.552 MHz. Span of the window is 312 kHz. Resolution bandwidth is 3.12 kHz. 401 points were collected for the spectrum. Right: Voltage versus Time view of 13.552 MHz clock. The plot uses 20 nanosecond divisions in the horizontal direction and 1 Volt divisions in the vertical direction.</figcaption>
 </figure>
+
+Figure 4 displays the 112.50 MHz clock in the frequency and time domains. The spectra of the signal shows that the fundamental has about 48 db of SFDR and about 65 dB of separation from the noise floor. The span of the measurement is 2 MHz. The time domain view of the "clock" is almost unrecognizable. The signal appears more sinusoidal than square. There is no under/over shooting -- instead, the slew rate of the 112.50 MHz signal is the slowest of the three clocks. 
 
 <figure>
 <img src="images/IMG_7819.jpeg" alt="frequency spectrum of 10.70kHz clock" style="width:49%">
@@ -63,6 +71,8 @@ The code which controlls the clock generation is from an <a href="https://learn.
 </figure>
 
 ## Discussion
+
+It seems that as the desired output frequency is increased, the output clock appears more sinusoidal than square-like. We propose two hypotheses: i) the clock-generation circuit cannot perform as fast as we want it to; ii) higher frequency content is more attenuated in its propagation from output of the Si5351 to input of the oscilloscope, so faster signals are naturally more attenuated. The first hypothesis is incorrect because the datasheet reports the device can supply output clocks up to 160 MHz. The more likely culprit for the degradation in shape is the attenuation of high frequencies from the parasitics of the traces, leads, packages, etc. 
 
 - The manufacturer claims that an Si5351 can generate frequencies from around 8 kHz to around 160 MHz. The recommended crystal frequency is 25 MHz. How can it generate frequencies in excess of 6X the basic clock rate?
 - How do I know which frequencies are able to be generated?
