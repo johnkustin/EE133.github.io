@@ -1,4 +1,4 @@
-# LAB 2 – Clock Generation with a Si5351A
+# LAB 2 – Clock Generation with a Si5351
 
 ## Authors
 
@@ -10,10 +10,12 @@ TODO
 - Clocks are basically in ALMOST EVERY system you will work on
 ## Background
 
-TODO.
-- previous course built colpitts oscillator. the number of times you will need to generate a clock far outnumber the times you would benefit from building a Colpitts oscillator from scratch. This being the case, I decided that we should do something more "representative" or "transferable" if you will.
-- Si5351 clock generator IC is a "modern," low-cost, and widely used part. As I mentioned on several occasions, the Si5351 is the part used to provide a signal source for the low frequency (100kHz to ~ 140 MHz) regime in the NanoVNA V2Plus4 that you have used in the lab. To me this means that the part can be usefully applied in low cost, reasonable performance test equipment and it warranted further investigation.
-- ![Si5351 datasheet](https://cdn-shop.adafruit.com/datasheets/Si5351.pdf)
+Previous iterations of Stanford University's Analog Communications Design Laboratory (EE133/233) had a lab on oscillators. In the past, they built ![Colpitts oscillators](https://en.wikipedia.org/wiki/Colpitts_oscillator). Times have changed and the current landscape of electronics is such that the number of times one will need to generate a clock is far greater than the number of times one would benefit from building a Colpitts oscillator. 
+
+This lab is meant to introduce the emerging engineer to a *modern*, low-cost, and widely used clock generator -- the ![Si5351](https://cdn-shop.adafruit.com/datasheets/Si5351.pdf). This part has a low price point, reasonable performance, and successful history (it is used in the NanoVNA V2 that was used in Lab1!).[^1]
+
+[^1]: This background is pulled from Steve Clark's Canva
+- ![Si5351 datasheet]
 - Adafruit Si5351 breakout ![page](https://learn.adafruit.com/adafruit-si5351-clock-generator-breakout/downloads)
 
 goals:
