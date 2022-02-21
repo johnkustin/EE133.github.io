@@ -12,22 +12,30 @@ TODO
 
 Previous iterations of Stanford University's Analog Communications Design Laboratory (EE133/233) had a lab on oscillators. In the past, they built ![Colpitts oscillators](https://en.wikipedia.org/wiki/Colpitts_oscillator). Times have changed and the current landscape of electronics is such that the number of times one will need to generate a clock is far greater than the number of times one would benefit from building a Colpitts oscillator. 
 
-This lab is meant to introduce the emerging engineer to a *modern*, low-cost, and widely used clock generator -- the ![Si5351](https://cdn-shop.adafruit.com/datasheets/Si5351.pdf). This part has a low price point, reasonable performance, and successful history (it is used in the NanoVNA V2 that was used in Lab1!).[^1]
+This lab is meant to introduce the emerging engineer to a *modern*, low-cost, and widely used clock generator -- the ![Si5351](https://cdn-shop.adafruit.com/datasheets/Si5351.pdf). This part has a low price point, reasonable performance, and successful history (it is used in the NanoVNA V2 that was used in Lab1!). The experience gained through this lab can be carried forward in a young engineer's career as they embark on projects that will most certainly include clock generation.[^1]
 
-[^1]: This background is pulled from Steve Clark's Canva
-- ![Si5351 datasheet]
-- Adafruit Si5351 breakout ![page](https://learn.adafruit.com/adafruit-si5351-clock-generator-breakout/downloads)
+[^1]: This background is pulled from Steve Clark's ![Canvas Announcement](https://canvas.stanford.edu/courses/148940/discussion_topics/722850).
 
-goals:
-in two hours or less, give you a very capable multi-channel clock generator that you could
-- use for your projects
-- take with you as you move forward in your career
-- use to think about how clock generation works (fractional-N PLLs, etc.)
+-  Si5351 breakout 
+
 
 
 ## Experimental Setup
 
-TODO
+The hardware used in this lab includes:
+- ![Adafruit Si5351 breakout board](https://learn.adafruit.com/adafruit-si5351-clock-generator-breakout/downloads)
+- ![ItsyBitsy M4 microcontroller](https://learn.adafruit.com/introducing-adafruit-itsybitsy-m4)
+- 3x male edge-mount SMA adapters
+- solderless breadboard
+- oscilloscope and probe
+- spectrum analyzer and probe
+
+<p style="text-align:center;">
+<figure>
+<img src="images/IMG_7812.jpeg" alt="breadboard setup" style="width:75%">
+<figcaption align="center">Fig. 1 - An Adafruit Si5351 breakoutboard with attached SMA adapters connected to an ItsyBitsy M4 microcontroller through a solderless breadboard. An oscilloscope probe is attached to the <code>clk0</code> port of the breakout board. </figcaption>
+</figure>
+</p>
 
 ## Measurements and Results
 
