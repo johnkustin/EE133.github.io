@@ -6,8 +6,7 @@ Author : John Kustin
 Lab partner: Yifan Zhu
 
 ## Abstract
-TODO
-- Clocks are basically in ALMOST EVERY system you will work on
+Clocks are pervasive in modern electronic circuits, some examples are digital circuitry, RF mixing, and  data converters. Due to the engineering effort and production cost of modern integrated circuits it is often desired that circuits nowadays are reconfigurable, i.e. programmable. In this lab, we demonstrate the Si5351 programmable clock generator. It is based on a fractional-N PLL and can be used for a plethora of projects due to its low price point and reasonable performance. Furthermore, the activities detailed in the report will teach the young engineer fundamentals of clock generation and some of the challenges inherent in clocked systems.
 ## Background
 
 Previous iterations of Stanford University's Analog Communications Design Laboratory (EE133/233) had a lab on oscillators. In the past, they built <a href="https://en.wikipedia.org/wiki/Colpitts_oscillator"> Colpitts oscillators </a>. Times have changed and the current landscape of electronics is such that the number of times one will need to generate a clock is far greater than the number of times one would benefit from building a Colpitts oscillator. 
@@ -82,16 +81,12 @@ Another application of the Si5351 is generation of in-phase and in-quadrature si
 
 None of these applications need to be done at a specific frequency. The Si5351 is capable of generating frqeuencies from 8 kHz to 160 MHz by using a fractional-N phase locked loop (PLL). Roughly speaking, fractional-N PLLs can perform a frequency multiplication on the input source of oscillation to generate output clocks that are greater in frequency than the input signal. This mechanism is enabled by a frequency divider put in *negative feedback*. To generate signals that are lower in frequency than the reference oscillator, fracional-N PLLs use clock divider circuits to make the resulting output clock slower. This mechanism is most readily enabled by counting circuits. For more information on how these devices work, please refer to this <a href="https://www.ti.com/lit/an/swra029/swra029.pdf?ts=1645439625997">TI datasheet</a>.
 
-CircuitPython makes configuring the Si5351 very easy. The APIs available allow the user to adjust the integer and fractional 
+Phase noise is an indicator of the signal quality[^2] of our generated clock. Phase noise is a measure of the quality in the frequency domain. It has an analog in the time domain called the phase jitter. Clean signals have low jitter, which implies that most of the signal's energy is concentrated on the fundamental frequency.[^3] The Si5351 datasheet reports that the part has a maximum phase jitter of 11 picoseconds rms. To get a feel for how good this is let us do a thought experiment on I/Q signal generation. Suppose we designate a 160 MHz clock as our in-phase signal and we want to generate its quadrature signal. The worst case phase jitter implies the in-quadrature signal's edges would be 11 picoseconds off from what we want. In other words, if we want (1/(160 MHz))/4 = 1.5625 ns of delay for 90 degrees phase difference between I and Q signals, then the worst case phase jitter bounds the delay to be within 1.5735 ns or 1.5515 ns. These bounds respectively correspond to 90.6336 degrees and 89.3664 degrees of phase difference -- a range of 1.2672 degrees of phase difference. Whether or not these numbers are "good" is relative to the desired application. 
 
-- Can I modify the CircuitPython code to generate a frequency (or two) of my choice?
-- Does it really work to write TRUE or FALSE to a particular place and turn that particular output ON / OFF?
+[^2]: For more detail please review <a href="https://www.ti.com/lit/an/swra029/swra029.pdf?ts=1645439625997"> this TI datasheet</a>.
 
-- If I wanted to try designing a PLL, might this be a gizmo that I could use to test my PLL?
-- What is phase noise? And how is it related to "jitter"? And it this a low-noise part? Or not? How can I tell?
-- So, Steve, if this is used for the "low frequency regime", what is used in the "high frequency regime" to provide the signal source in the NanoVNA V2 Plus4?
+[^3]: For more detail on the types of jitter please see <a href="https://www.edn.com/jitter-measurement-references-matter/"> this EDN post</a>.
 
 ## Conclusions
 
-TODO
-
+We have demonstrated that the Si5351 is a low-cost, easy to use clock generator that is capable of being included in larger circuits, e.g. with microcontrollers, and quickly programmed with CircuitPython. This device can be used as the clock generator in a circuit to generate arbitrary waveforms or generate the I/Q signals for a mixer. The device works in a relatively low frequency range of 8 kHz to 160 MHz but with good enough phase jitter for a variety of projects. For projects with more critical and stringent requirements, the Si5351 should probably be replaced with a component that has lower phase jitter. The skills and understanding developed through this lab are widely applicable to modern projects due to the pervasiveness of clocked systems.  
