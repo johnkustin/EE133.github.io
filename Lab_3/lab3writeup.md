@@ -6,22 +6,42 @@ Author : John Kustin
 Lab partner: Yifan Zhu
 
 ## Abstract
-todo
+Mixers are ubiquitos in RF systems. In this lab, we gain hands on experience with how diode-ring mixers work by building one. Then, we attemp to measure some fundamental performance characteristics of the mixer. As a result of this work, we are capable in understanding the role mixers play in a larger circuit and how to quantify its ability to mix well.
 ## Background
 
-todo
+Fundamentally, mixers multiply time domain signals. As a result of the signals being sinusoids, the multiplication generates the sum and difference frequencies of those input sinusoids. The mixer goes by many other names, including "modulator / demodulator", "multiplier", "synchronous detector", "phase detector", "upconverter / downconverter".
+
+Let <img src="https://render.githubusercontent.com/render/math?math=\color{gray}{V_1(t)=A_1\cos(\omega_1t)}"> and <img src="https://render.githubusercontent.com/render/math?math=\color{gray}{V_2(t)=A_2\cos(\omega_2t)}">. Then <img src="https://render.githubusercontent.com/render/math?math=\color{gray}{V_1(t)\cdot V_2(t)=\frac{A_1A_2}{2}[\cos(\omega_1 + \omega_2)t + \cos(\omega_1-\omega_2)t]}">. Mixing generates a sum and difference frequency.
+
+For downconversion, a mixer requires a radio frequency signal (RF) and a local oscillator (LO) to generate an intermediate frequency signal (IF). For upconversion, a mixer requires an IF signal and an LO to generate *two* RF signals. Figure B.1 shows two examples of frequency conversion.[^1] 
+
+[^1]: Figure B.1 is taken from Steve Clark's slides for Stanford's EE133 course during the Winter of 2022 offering.
+
+The figure demonstrates high side injection in the downconversion case. High side injection means your LO frequency is higher than your RF signal. 
+
+<figure>
+<img src="images/freq-shifting.png">
+<figcaption>Figure B.1 - An example of frequency conversion. The mixer is a three port device and has two directions to shift a frequency. The figure demonstrates the effect of downconversion and upconversion in the frequency domain. </figcaption>
+</figure>
 
 ## Experimental Setup
 
 <figure>
 <img src="images/IMG_7841.jpeg">
-<figcaption>Figure ES.1 - The mixer constructed in the lab. It consists of a diode-ring (part # here) and two transformers (baluns, part # here). left hand plug is RF. right hand plug is LO. bottom middle is IF.</figcaption>
+<figcaption>Figure ES.1 - The mixer constructed in the lab. It consists of a <a href="https://rocelec.widen.net/view/pdf/qxnorbh6l6/INFNS15420-1.pdf?t.download=true&u=5oefqw">BAT15-099R diode-ring</a> and two <a href="https://www.minicircuits.com/pdfs/ADT4-1WT+.pdf"> ADT4-1WT+ transformers </a>. The left, right, and middle ports are respectively for RF, LO, and IF. </figcaption>
+</figure>
+
+Figure ES.2 shows a schematic view of the mixer. The mixer is completely passive -- there are no active devices in the circuit. This fact has consequences for conversion gain/loss and will be explored later.
+
+<figure>
+<img src="images/mixer-schematic.png">
+<figcaption>Figure ES.2 - A schematic view of the mixer. It uses two transformers and one diode ring. The orange numbers correspond to the pin numbers on the ADT4-1WT+ package. The pink numbers correspond to the pin numbers on the BAT15-099R package. </figcaption>
 </figure>
 
 <figure>
 <img src="images/IMG_7842.jpeg" style="width:49%">
 <img src="images/IMG_7843.jpeg" style="width:49%">
-<figcaption>Figure ES.2 - Functional verification of the mixer. The RF is an 8 MHz signal being mixed with a 12 MHz LO. The up and down converted signals are visible in the frequency domain (right hand picture) at 4 and 20 MHz. There is a noticable amount of LO leakage seen at 12 MHz. Three other spurs are visible between 8 and 10 MHz, and at 16 MHz. </figcaption>
+<figcaption>Figure ES.3 - Functional verification of the mixer. The RF is an 8 MHz signal being mixed with a 12 MHz LO. The up and down converted signals are visible in the frequency domain (right hand picture) at 4 and 20 MHz. There is a noticable amount of LO leakage seen at 12 MHz. Three other spurs are visible between 8 and 10 MHz, and at 16 MHz. </figcaption>
 </figure>
 
 
