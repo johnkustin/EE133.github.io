@@ -135,4 +135,4 @@ As was discussed during lecture and lab time, the diode-ring mixer should go to 
 
 ## Conclusions
 
-todo
+The diode-ring mixer demonstrated itself as a viable way of mixing sinusoidal signals. This ability is essential for RF systems and is used for enconding information and frequency shifting, among other applications. The mixer built for this lab is capable of downconverting to IFs as low as 10 kHz, so it may be used for future engineering projects which operate in the kilohertz range. The knowledge gained through this lab can enable the young engineer to make informed decisions regarding mixer selection.
