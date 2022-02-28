@@ -11,7 +11,7 @@ Mixers are ubiquitos in RF systems. In this lab, we gain hands on experience wit
 
 Fundamentally, mixers multiply time domain signals. As a result of the signals being sinusoids, the multiplication generates the sum and difference frequencies of those input sinusoids. The mixer goes by many other names, including "modulator / demodulator", "multiplier", "synchronous detector", "phase detector", "upconverter / downconverter".
 
-Let <img src="https://render.githubusercontent.com/render/math?math=\color{gray}{V_1(t)=A_1\cos(\omega_1t)}"> and <img src="https://render.githubusercontent.com/render/math?math=\color{gray}{V_2(t)=A_2\cos(\omega_2t)}">. Then <img src="https://render.githubusercontent.com/render/math?math=\color{gray}{V_1(t)\cdot V_2(t)=\frac{A_1A_2}{2}[\cos(\omega_1 + \omega_2)t + \cos(\omega_1-\omega_2)t]}">. Mixing generates a sum and difference frequency.
+Let <img src="https://latex.codecogs.com/svg.image?V_1(t)=A_1\cos(\omega_1t)" title="V_1(t)=A_1\cos(\omega_1t)" /> and <img src="https://latex.codecogs.com/svg.image?V_2(t)=A_2\cos(\omega_2t)" title="V_2(t)=A_2\cos(\omega_2t)" />. Then <img src="https://latex.codecogs.com/svg.image?V_1(t)\cdot&space;V_2(t)=\frac{A_1A_2}{2}[\cos(\omega_1&space;&plus;&space;\omega_2)t&space;&plus;&space;\cos(\omega_1-\omega_2)t]" title="V_1(t)\cdot V_2(t)=\frac{A_1A_2}{2}[\cos(\omega_1 + \omega_2)t + \cos(\omega_1-\omega_2)t]" />. Mixing sinusoids generates a sum and difference frequency.
 
 For downconversion, a mixer requires a radio frequency signal (RF) and a local oscillator (LO) to generate an intermediate frequency signal (IF). For upconversion, a mixer requires an IF signal and an LO to generate *two* RF signals. Figure B.1 shows two examples of frequency conversion.[^1] 
 
@@ -24,18 +24,18 @@ The figure demonstrates high side injection in the downconversion case. High sid
 <figcaption>Figure B.1 - An example of frequency conversion. The mixer is a three port device and has two directions to shift a frequency. The figure demonstrates the effect of downconversion and upconversion in the frequency domain. </figcaption>
 </figure>
 
+Mixing can be done with the circuit in Figure B.2. The mixer is completely passive -- there are no active devices in the circuit. This fact has consequences for conversion gain/loss and will be explored later.
+
+<figure>
+<img src="images/mixer-schematic.png" class="center">
+<figcaption>Figure B.2 - A schematic view of the mixer. It uses two transformers and one diode ring. The orange numbers correspond to the pin numbers on the ADT4-1WT+ package. The pink numbers correspond to the pin numbers on the BAT15-099R package. </figcaption>
+</figure>
+
 ## Experimental Setup
 
 <figure>
 <img src="images/IMG_7841.jpeg">
 <figcaption>Figure ES.1 - The mixer constructed in the lab. It consists of a <a href="https://rocelec.widen.net/view/pdf/qxnorbh6l6/INFNS15420-1.pdf?t.download=true&u=5oefqw">BAT15-099R diode-ring</a> and two <a href="https://www.minicircuits.com/pdfs/ADT4-1WT+.pdf"> ADT4-1WT+ transformers </a>. The left, right, and middle ports are respectively for RF, LO, and IF. </figcaption>
-</figure>
-
-Figure ES.2 shows a schematic view of the mixer. The mixer is completely passive -- there are no active devices in the circuit. This fact has consequences for conversion gain/loss and will be explored later.
-
-<figure>
-<img src="images/mixer-schematic.png">
-<figcaption>Figure ES.2 - A schematic view of the mixer. It uses two transformers and one diode ring. The orange numbers correspond to the pin numbers on the ADT4-1WT+ package. The pink numbers correspond to the pin numbers on the BAT15-099R package. </figcaption>
 </figure>
 
 <figure>
