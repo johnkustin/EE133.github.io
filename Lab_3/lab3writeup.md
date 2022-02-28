@@ -26,12 +26,10 @@ The figure demonstrates high side injection in the downconversion case. High sid
 
 Mixing can be done with the double balanced diode-ring circuit in Figure B.2. The mixer is completely passive -- there are no active devices in the circuit. This fact has consequences for conversion gain/loss and will be explored later.
 
-<center>
 <figure>
 <img src="images/mixer-schematic.png">
 <figcaption>Figure B.2 - A schematic view of the mixer. It uses two transformers and one diode ring. The orange numbers correspond to the pin numbers on the ADT4-1WT+ package. The pink numbers correspond to the pin numbers on the BAT15-099R package. </figcaption>
 </figure>
-</center>
 
 A derivation of how the circuit in Figure B.2 performs the multiplication is left to a circuits course.
 
@@ -44,8 +42,8 @@ Figure ES.1 shows the constructed mixer. Figure ES.2 (left) shows the same mixer
 </figure>
 
 <figure>
-<img src="images/IMG_7842.jpeg" style="width:49%">
-<img src="images/IMG_7843.jpeg" style="width:49%">
+<img src="images/IMG_7842.jpeg" style="width:45%">
+<img src="images/IMG_7843.jpeg" style="width:45%">
 <figcaption>Figure ES.2 - Functional verification of the mixer. The RF is an 8 MHz signal being mixed with a 12 MHz LO. The sum and difference signals are visible in the frequency domain (right hand picture) at 4 and 20 MHz. There is a noticable amount of LO leakage seen at 12 MHz. Three other spurs are visible between 8 and 10 MHz, and at 16 MHz. </figcaption>
 </figure>
 
