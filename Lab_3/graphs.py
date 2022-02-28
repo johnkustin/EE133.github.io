@@ -4,15 +4,16 @@ import matplotlib.pyplot as plt
 RFpower = np.arange(-1, 10)
 RealIFpower = np.array([-6.95,-6.37,-5.89,-5.56,-5.29,-5.08,-4.92,-4.76,-4.65,-4.56,-4.37])
 conversion = RealIFpower - RFpower
-IdealIFpower = RFpower + conversion[0]
+IdealIFpower = RFpower + conversion[1]
 p1dbindx = np.argmin(np.abs(IdealIFpower - RealIFpower - 1))
+interpP1db = np.interp(x, RFpower, np.abs(IdealIFpower - RealIFpower - 1))
 print(f'p1dbindx: {p1dbindx}. RealIFpower[p1dbindx] = {RealIFpower[p1dbindx]}. IdealIFpower[p1dbindx] = {IdealIFpower[p1dbindx]}')
 plt.figure(1)
 plt.plot(RFpower, conversion)
 plt.grid()
 plt.xlabel('RF power [dBm]')
 plt.ylabel('Conversion [dBm]')
-plt.title('Conversion Loss of the Didoe Ring Mixer')
+plt.title('Conversion Loss of the Didoe Ring Mixer versus RF Power')
 plt.savefig('images/conversion.png')
 plt.show()
 fig2 = plt.figure(2)

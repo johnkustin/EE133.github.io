@@ -63,10 +63,10 @@ To study the 1 dBm compression point and conversion gain/loss, the IF power was 
 
 Figure MR.1 reveals that the diode ring mixer reaches its 1 dBm compression point just under 2 dBm of RF power. The "ideal" IF curve was computed according to <code>IdealIFpower = RFpower + conversion[1]</code> where <code>conversion[1]</code> is the conversion loss of a 0 dBm RF signal. The code which made these charts is in <code>graphs.py</code> of this folder.
 
-Figure MR.2 reveals that the conversion loss of the mixer is not constant across RF powers. The chart suggests that the diode ring mixer has a maximum amount of power it can output. This result is derived from the fact that as RF power increases, the conversion loss grows larger. By the formula for conversion gain (<code>convesrion = (IF power)[dBm] - (RF power)[dBm].</code>), the data suggests that the output IF power delivered to the spectrum analyzer is constant beyond some point. More investigation is needed to understand the true source of the conversion loss.
+Figure MR.2 reveals that the conversion loss of the mixer is not constant across RF powers. The chart suggests that the diode ring mixer has a maximum amount of power it can output. This result is derived from the fact that as RF power increases, the conversion loss grows larger. By the formula for conversion gain (<code>conversion = (IF power)[dBm] - (RF power)[dBm].</code>), the data suggests that the output IF power delivered to the spectrum analyzer is constant beyond some point. More investigation is needed to understand the true source of the conversion loss.
 <figure>
 <img src="images/conversion.png">
-<figcaption>Figure MR.2 - Computed conversion loss as a function of different RF powers. The conversion loss is around 6 dBm for RF powers below 1 mW. The convesrion loss is in dBm computed according to <code>convesrion = (IF power)[dBm] - (RF power)[dBm].</code></figcaption>
+<figcaption>Figure MR.2 - Computed conversion loss as a function of different RF powers. The conversion loss is around 6 dBm for RF powers below 1 mW. The conversion loss is in dBm computed according to <code>conversion = (IF power)[dBm] - (RF power)[dBm].</code></figcaption>
 </figure>
 
 The conversion loss of the passive diode-ring mixer at low RF powers is around -6 dB. This number is about what is expected according to the following <a href="https://www.qsl.net/va3iul/RF%20Mixers/RF_Mixers.pdf"> publication</a>.
@@ -106,17 +106,33 @@ The following table summarizes the disappearnce of the IF as the RF frequency wa
 |RF Frequency [MHz]|Downconverted IF Power [dBm]|
 |------------|----------------------|
 |29.85| -6|
+|29.90| -8|
+|29.95| -13|
+|29.97| -17.54|
+|29.99| -30|
+<p align = "left">Table 1 - Measured (downconverted) IF power as a function of RF Frequency. LO frequency was fixed at 30 MHz. </p>
 
+Whether or not -30 dBm is discernable or not in a larger system depends on the rest of the system. When the IF was set to be 0 Hz (DC) the signal disappeared into the existing spur at DC.
 
 ## Discussion
 todo
 
-- We talked about the 1dB compression point. Why is this an important performance metric? Can we change it? If so, how might we do that?
-- There was some discussion about LO leakage. Why is that important and what can be done about that?
-- Did you use your mixer as an up converter? As a down converter? If you didn't try both of these, why not?
-- Did you measure the conversion gain vs LO drive level. I guess you must have if you determined the 1dB compression point. How did you make those measurements? Was this at a single frequency? If so was there anything special about the frequency you chose? If you did the measurements at different frequencies, did you find about the same result?
-- There were a number of questions about why one would be concerned about the minimum IF frequency. Greig pointed out that the diode ring mixer should "go to DC" but that the FET ring wouldn't. Why might that be something one would be concerned about? What about the Gilbert cell mixer; should that "go to DC"? Does all this have anything to do with zero IF SDR's or radar stuff?
-- In the mixer you built, why wouldn't the mixer go to zero IF? What could be done if you want it to go to zero IF?
+The mixer functions as expected, but more background reading of the prior art is needed to place the mixer's performance in the context of commercially available devices. Nevertheless, here we discuss various questions that came up during the lab.
+
+The 1dB compression point was an important metric to find because it describes when the device is exiting its linear operation. Ideally the IF output is linearly proportional to the RF input. As we saw in Figure MR.1, there is a limit to the linearity with the diode-ring mixer. The 1 dB compression point appears to be a property inherent to either the topology of the mixer *or* the choice of devices for the circuit. For the diode-ring topology, there does not appear to be much room to improve the 1 dB compression, other than using more expensive (better) parts.
+
+Local oscillator leakage was another quality of the mixer that stood out. Itself is a spur and can "crowd" the spectrum and potentially "bleed" into frequency ranges of use. One technique to reducing the LO leakage is to filter it out. The ease of filtering out the LO leakage most likely depends on the LO leakage's separation from IF frequencies, since very steep analog filters are difficult to build.
+
+The mixer was only used as a down converter. At the time of doing the lab, the author forgot that mixers could both up and down convert. He was reading a bullet point list of things to do in the lab and forgot to recall the lecture slide which originally presented Figure B.1.
+
+Because the conversion gain is defined as <code>conversion = (IF power)[dBm] - (RF power)[dBm], </code> (see this <a href="https://www.qsl.net/va3iul/RF%20Mixers/RF_Mixers.pdf"> document for more information</a>) only the input power was swept. In other words, the author did not investigate conversion gain versus LO drive level. Because the diode-ring mixer uses passive devices, the author did not think characterizing conversion gain versus LO drive level would yield an insightful result. We expect the conversion gain/loss to follow the same trend across all usable LO drive levels -- what we expect to be different is the value of conversion gain/loss at each measured point. In other words, the conversion gain/loss curve would shift vertically when the LO drive level is modulated.
+
+The conversion gain was measured only at only one LO frequency and one RF frequency. For a more thorough characterization of the mixer, the conversion gain should be measured across different LO and RF frequencies. Time was the limiting factor for collecting this data. 
+
+The ability for a mixer to operate with low IF can be valuable if the application desired the ability to avoid noise. The ability to answer why the built mixer cannot go to zero IF is beyond the author's current understanding of mixers. The common hypothesis is "parasitics".
+
+As was discussed during lecture and lab time, the diode-ring mixer should go to DC. There are two other common variants of the mixer: FET-ring and Gilbert cell. The FET ring version of a switching mixer should not be able to go to DC because it would require the balunced to unbalenced transformer on the IF side to operate in DC. The Gilbert cell mixer should be able to go to DC because an IF at DC for this circuit topology implies one branch is on and the other is off. For transistors, this method of operation is valid. The ability for a mixer to go to DC is determined by the circuit topology.
+
 ## Conclusions
 
 todo
