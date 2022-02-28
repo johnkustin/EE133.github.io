@@ -27,7 +27,7 @@ The figure demonstrates high side injection in the downconversion case. High sid
 Mixing can be done with the double balanced diode-ring circuit in Figure B.2. The mixer is completely passive -- there are no active devices in the circuit. This fact has consequences for conversion gain/loss and will be explored later.
 
 <figure>
-<img src="images/mixer-schematic.png">
+<img src="images/mixer-schematic.png" style="width:100%">
 <figcaption>Figure B.2 - A schematic view of the mixer. It uses two transformers and one diode ring. The orange numbers correspond to the pin numbers on the ADT4-1WT+ package. The pink numbers correspond to the pin numbers on the BAT15-099R package. </figcaption>
 </figure>
 
@@ -37,7 +37,7 @@ A derivation of how the circuit in Figure B.2 performs the multiplication is lef
 
 Figure ES.1 shows the constructed mixer. Figure ES.2 (left) shows the same mixer being driven by a signal generator and being measured by a spectrum analyzer.
 <figure>
-<img src="images/IMG_7841.jpeg">
+<img src="images/IMG_7841.jpeg" style="width:100%">
 <figcaption>Figure ES.1 - The mixer constructed in the lab. It consists of a <a href="https://rocelec.widen.net/view/pdf/qxnorbh6l6/INFNS15420-1.pdf?t.download=true&u=5oefqw">BAT15-099R diode-ring</a> and two <a href="https://www.minicircuits.com/pdfs/ADT4-1WT+.pdf"> ADT4-1WT+ transformers </a>. The left, right, and middle ports are respectively for RF, LO, and IF. </figcaption>
 </figure>
 
@@ -55,7 +55,7 @@ All spectrum analyzer measurements used 100 samples of exponentially-weighted av
 To study the 1 dBm compression point and conversion gain/loss, the IF power was measured for different RF. The LO was an 8 MHz sinusoid at 7 dBm. The input RF power was stepped from -1 dBm to 7 dBm in +1 dBm increments. At each step, the output IF power was measured. From this data, the 1 dBm compression point and conversion loss were computed and are shown in figures MR.1 and MR.2.
 
 <figure>
-<img src="images/p1db.png">
+<img src="images/p1db.png" style="width:100%">
 <figcaption>Figure MR.1 - Measured IF power as a function of different RF powers. The 1 dBm compression point occurs just beyond 1 dBm of RF power. </figcaption>
 </figure>
 
@@ -63,7 +63,7 @@ Figure MR.1 reveals that the diode ring mixer reaches its 1 dBm compression poin
 
 Figure MR.2 reveals that the conversion loss of the mixer is not constant across RF powers. The chart suggests that the diode ring mixer has a maximum amount of power it can output. This result is derived from the fact that as RF power increases, the conversion loss grows larger. By the formula for conversion gain (<code>conversion = (IF power)[dBm] - (RF power)[dBm].</code>), the data suggests that the output IF power delivered to the spectrum analyzer is constant beyond some point. More investigation is needed to understand the true source of the conversion loss.
 <figure>
-<img src="images/conversion.png">
+<img src="images/conversion.png" style="width:100%">
 <figcaption>Figure MR.2 - Computed conversion loss as a function of different RF powers. The conversion loss is around 6 dBm for RF powers below 1 mW. The conversion loss is in dBm computed according to <code>conversion = (IF power)[dBm] - (RF power)[dBm].</code></figcaption>
 </figure>
 
@@ -72,7 +72,7 @@ The conversion loss of the passive diode-ring mixer at low RF powers is around -
 Figure MR.3 shows the spur levels of the mixer when the LO is a 7 dBm 30 MHz sinusoid and the RF is a 0 dBm 7 MHz sinusoid. Over a 60 MHz span many spurs are visible. The up and down mixed IF signals have around -10 dBm power and are distinct from the other spurs. The different spurious frequencies are given by the formula <img src="https://latex.codecogs.com/svg.image?f_{spur}=mf_{RF}&plus;nf_{LO}\;\forall&space;m,n&space;\in\mathbb{Z}\setminus\{0\}" title="f_{spur}=mf_{RF}+nf_{LO}\;\forall m,n \in\mathbb{Z}\setminus\{0\}" />. Because the sum and difference frequencies are at least 30 dB (1000x power difference) above the other spurs we conclude that the mixer is suitable in a larger circuit.
 
 <figure>
-<img src="images/spur-levels.jpg">
+<img src="images/spur-levels.jpg" style="width:100%">
 <figcaption>Figure MR.3 - Spur levels of the mixer when the LO is a 7 dBm 30 MHz sinusoid and the RF is a 0 dBm 7 MHz sinusoid. The span of the spectrum is 60 MHz so many spurs can be seen. The up and down mixed IF signals have around -10 dBm power and are distinct from the spurs. </figcaption>
 </figure>
 
@@ -83,19 +83,19 @@ This belief motivated the investigation shown by figures MR.4,5, and 6. To find 
 Figures MR.4,5, and 6 show the IF at 150 kHz, 100 kHz, and 10 kHz. 
 
 <figure>
-<img src="images/if-150kHz.jpeg">
+<img src="images/if-150kHz.jpeg" style="width:100%">
 <figcaption>Figure MR.4 - The IF signal from mixing a 30 MHz LO with a 29.85 MHz RF signal. The IF signal is about 50 dBm above the noise floor. The IF signal has a power of -6 dBm. The minimum IF frequency is lower than 150 kHz.</figcaption>
 </figure>
 
 
 <figure>
-<img src="images/if-100kHz.jpeg">
+<img src="images/if-100kHz.jpeg" style="width:100%">
 <figcaption>Figure MR.5 - The IF signal from mixing a 30 MHz LO with a 29.90 MHz RF signal. The IF signal is less than 50 dBm above the noise floor. The IF signal has a power of -10 dBm. Intermodulation spurs have about 150 kHz of separation. The minimum IF frequency is lower than 150 kHz.</figcaption>
 </figure>
 
 
 <figure>
-<img src="images/if-10kHz.jpeg">
+<img src="images/if-10kHz.jpeg" style="width:100%">
 <figcaption>Figure MR.6 - The IF signal from mixing a 30 MHz LO with a 29.99 MHz RF signal. The IF signal is less than 30 dBm above the noise floor. The IF signal has a power of -30 dBm. Intermodulation spurs have about 75 kHz of separation. One confusing part of this line of investigation is that the notion of when the signal is indistguishable is not well defined.</figcaption>
 </figure>
 
@@ -113,7 +113,6 @@ The following table summarizes the disappearnce of the IF as the RF frequency wa
 Whether or not -30 dBm is discernable or not in a larger system depends on the rest of the system. When the IF was set to be 0 Hz (DC) the signal disappeared into the existing spur at DC.
 
 ## Discussion
-todo
 
 The mixer functions as expected, but more background reading of the prior art is needed to place the mixer's performance in the context of commercially available devices. Nevertheless, here we discuss various questions that came up during the lab.
 
