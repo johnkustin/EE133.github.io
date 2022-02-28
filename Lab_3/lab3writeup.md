@@ -41,11 +41,11 @@ Figure ES.1 shows the constructed mixer. Figure ES.2 (left) shows the same mixer
 <figcaption>Figure ES.1 - The mixer constructed in the lab. It consists of a <a href="https://rocelec.widen.net/view/pdf/qxnorbh6l6/INFNS15420-1.pdf?t.download=true&u=5oefqw">BAT15-099R diode-ring</a> and two <a href="https://www.minicircuits.com/pdfs/ADT4-1WT+.pdf"> ADT4-1WT+ transformers </a>. The left, right, and middle ports are respectively for RF, LO, and IF. </figcaption>
 </figure>
 
-<figure>
-<img src="images/IMG_7842.jpeg" style="width:45%">
-<img src="images/IMG_7843.jpeg" style="width:45%">
+<p float="left">
+<img src="images/IMG_7842.jpeg" style="width:49%">
+<img src="images/IMG_7843.jpeg" style="width:49%">
 <figcaption>Figure ES.2 - Functional verification of the mixer. The RF is an 8 MHz signal being mixed with a 12 MHz LO. The sum and difference signals are visible in the frequency domain (right hand picture) at 4 and 20 MHz. There is a noticable amount of LO leakage seen at 12 MHz. Three other spurs are visible between 8 and 10 MHz, and at 16 MHz. </figcaption>
-</figure>
+</p>
 
 The right side of Figure ES.2 shows a close up of the spectrum for the mixing of an 8 MHz RF signal with a 12 MHz LO. The sum and difference frequencies are at 4 and 20 MHz. The LO leakage can be visibally seen at the frequency of the local oscillator, 12 MHz -- the spectral power of the LO is 100 times smaller than the power of either the sum or difference frequencies. Many other spurs can be seen, which are most likely the result of intermodulation due to the nonlinear diode ring.
 
